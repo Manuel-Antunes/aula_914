@@ -1,0 +1,22 @@
+
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - before: >
+      source ~/.bashrc
+    init: >
+      flutter upgrade && 
+      flutter update-packages --force-upgrade &&
+      flutter run -d web-server --no-resident # prebuilds the app
+    command: >
+      flutter run -d web-server --web-port=8080 --web-hostname=0.0.0.0
+ports:
+  - port: 8080
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - dart-code.flutter
+    - dart-code.dart-code
+    - pkief.material-icon-theme
+    - nash.awesome-flutter-snippets
